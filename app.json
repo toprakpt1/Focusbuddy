@@ -18,6 +18,7 @@
       "bundleIdentifier": "com.focusbuddy.app"
     },
     "android": {
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/focusbuddy.png",
         "backgroundColor": "#FFF8F0"
