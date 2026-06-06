@@ -77,7 +77,7 @@
         "notifications": "Bildirimler",
         "notifications_desc": "Süre bitişleri ve seri hatırlatmaları için",
         "notifications_denied_title": "Bildirim İzni Gerekli",
-        "notifications_denied_desc": "Bildirimleri açmak için sistem iznini vermen gerekiyor.",
+        "notifications_denied_desc": "Lütfen cihaz Ayarlar > Uygulamalar > FocusBuddy > Bildirimler yolundan bildirimleri etkinleştirin.",
         "notifications_required_title": "Bildirimleri Aç",
         "notifications_required_desc": "Ekran hep açık kapalıyken süre bitişlerini kaçırmaman için bildirimleri açman gerekiyor.",
         "screen_always_on": "Ekran Hep Açık",

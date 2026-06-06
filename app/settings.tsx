@@ -23,8 +23,7 @@ import {
 } from 'lucide-react-native';
 
 const FOCUS_OPTIONS: { value: FocusDuration; labelKey: string }[] = [
-    // Test duration kept for quick local testing when needed.
-    // { value: 0.16666666666666666, labelKey: 'settings.duration_10s' },
+    { value: 0.16666666666666666, labelKey: 'settings.duration_10s' },
     { value: 25, labelKey: 'settings.duration_25' },
     { value: 45, labelKey: 'settings.duration_45' },
     { value: 60, labelKey: 'settings.duration_60' },

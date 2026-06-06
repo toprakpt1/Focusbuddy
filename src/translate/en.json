@@ -77,7 +77,7 @@
         "notifications": "Notifications",
         "notifications_desc": "For timer endings and streak reminders",
         "notifications_denied_title": "Notification Permission Required",
-        "notifications_denied_desc": "You need to allow system notifications to enable reminders.",
+        "notifications_denied_desc": "Please enable notifications for FocusBuddy in your device Settings > Apps > FocusBuddy > Notifications.",
         "notifications_required_title": "Enable Notifications",
         "notifications_required_desc": "Turn on notifications so timer endings are not missed when the screen is allowed to sleep.",
         "screen_always_on": "Screen Always On",

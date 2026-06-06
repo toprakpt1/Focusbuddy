@@ -51,7 +51,20 @@
           "visibility": "visible",
           "position": "relative"
         }
-      ]
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "blockedPermissions": [
+              "android.permission.INTERNET",
+              "android.permission.ACCESS_NETWORK_STATE",
+              "android.permission.RECORD_AUDIO"
+            ]
+          }
+        }
+      ],
+      "./plugins/withAbiSplits"
     ],
     "extra": {
       "router": {},
