@@ -42,7 +42,6 @@
     },
     "plugins": [
       "expo-router",
-      "expo-notifications",
       [
         "expo-navigation-bar",
         {
@@ -64,7 +63,8 @@
           }
         }
       ],
-      "./plugins/withAbiSplits"
+      "./plugins/withAbiSplits",
+      "./plugins/withLocalNotifications"
     ],
     "extra": {
       "router": {},

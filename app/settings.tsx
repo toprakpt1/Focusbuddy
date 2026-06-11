@@ -8,7 +8,7 @@ import { Card } from '../src/components/ui/Card';
 import { useSettingsStore, type FocusDuration } from '../src/stores/useSettingsStore';
 import { useTimerStore } from '../src/stores/useTimerStore';
 import { useTheme } from '../src/constants/theme';
-import { cancelAllAppNotifications, ensureNotificationPermissions } from '../src/services/notifications';
+import { cancelAllAppNotifications, ensureNotificationPermissions } from '../src/services/localNotifications';
 import {
     Globe,
     Bell,
@@ -253,20 +253,7 @@ export default function SettingsScreen() {
             return;
         }
 
-        if (!notificationsEnabled) {
-            const granted = await ensureNotificationPermissions();
-
-            if (!granted) {
-                Alert.alert(
-                    t('settings.notifications_required_title'),
-                    t('settings.notifications_required_desc')
-                );
-                return;
-            }
-
-            setNotificationsEnabled(true);
-        }
-
+        // Turning screen-off mode on — just apply it, no dependency on notifications
         setKeepScreenOn(false);
     };
 

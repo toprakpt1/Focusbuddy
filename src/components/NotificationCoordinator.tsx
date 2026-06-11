@@ -7,7 +7,7 @@ import {
     cancelTimerCompletionNotifications,
     scheduleStreakReminder,
     scheduleTimerCompletionNotification,
-} from '../services/notifications';
+} from '../services/localNotifications';
 
 export function NotificationCoordinator() {
     const notificationsEnabled = useSettingsStore((state) => state.notificationsEnabled);
