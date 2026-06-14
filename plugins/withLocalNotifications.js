@@ -333,18 +333,32 @@ function withLocalNotifications(config) {
   config = withAndroidManifest(config, (cfg) => {
     const manifest = cfg.modResults.manifest;
 
-    // Remove unwanted permissions
-    if (manifest["uses-permission"]) {
-      manifest["uses-permission"] = manifest["uses-permission"].filter((p) => {
-        const name = p.$ && p.$["android:name"];
-        return name && !PERMISSIONS_TO_REMOVE.includes(name);
-      });
+    // Add tools namespace if it doesn't exist
+    if (!manifest.$["xmlns:tools"]) {
+      manifest.$["xmlns:tools"] = "http://schemas.android.com/tools";
     }
 
     // Ensure uses-permission array exists
     if (!manifest["uses-permission"]) {
       manifest["uses-permission"] = [];
     }
+
+    // Explicitly add or modify unwanted permissions with tools:node="remove"
+    PERMISSIONS_TO_REMOVE.forEach((permission) => {
+      const existing = manifest["uses-permission"].find(
+        (p) => p.$ && p.$["android:name"] === permission
+      );
+      if (existing) {
+        existing.$["tools:node"] = "remove";
+      } else {
+        manifest["uses-permission"].push({
+          $: {
+            "android:name": permission,
+            "tools:node": "remove",
+          },
+        });
+      }
+    });
 
     // Add POST_NOTIFICATIONS (Android 13+)
     const hasPostNotifications = manifest["uses-permission"].some(
