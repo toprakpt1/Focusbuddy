@@ -28,7 +28,7 @@ export function NotificationCoordinator() {
     }, [history, notificationsEnabled, streak]);
 
     useEffect(() => {
-        if (!notificationsEnabled || keepScreenOn || timerStatus !== 'running') {
+        if (!notificationsEnabled || timerStatus !== 'running') {
             cancelTimerCompletionNotifications();
             return;
         }

@@ -370,6 +370,23 @@ function withLocalNotifications(config) {
       });
     }
 
+    // Add exact alarm permissions for timer (Android 14+)
+    const exactAlarmPermissions = [
+      "android.permission.SCHEDULE_EXACT_ALARM",
+      "android.permission.USE_EXACT_ALARM"
+    ];
+
+    exactAlarmPermissions.forEach((permission) => {
+      const hasPerm = manifest["uses-permission"].some(
+        (p) => p.$ && p.$["android:name"] === permission
+      );
+      if (!hasPerm) {
+        manifest["uses-permission"].push({
+          $: { "android:name": permission },
+        });
+      }
+    });
+
     // Register the BroadcastReceiver
     const app = manifest.application && manifest.application[0];
     if (app) {
