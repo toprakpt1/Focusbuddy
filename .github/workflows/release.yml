@@ -1,8 +1,6 @@
 name: Build & Release
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
     inputs:
       version:
@@ -43,21 +41,11 @@ jobs:
         working-directory: android
         run: ./gradlew assembleDebug
 
-      - name: Determine version
-        id: version
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "tag=${{ github.event.inputs.version }}" >> "$GITHUB_OUTPUT"
-          else
-            SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
-            echo "tag=v0.0.0-${SHORT_SHA}" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ steps.version.outputs.tag }}
-          name: FocusBuddy ${{ steps.version.outputs.tag }}
+          tag_name: ${{ github.event.inputs.version }}
+          name: FocusBuddy ${{ github.event.inputs.version }}
           generate_release_notes: true
           files: |
             android/app/build/outputs/apk/debug/app-armeabi-v7a-debug.apk
